@@ -16,7 +16,7 @@ import com.employstream.applicantkioske.R;
 
 public class ThemeColors {
 
-    private static final String NAME = "ThemeColors", KEY = "color";
+    private static final String NAME = "ThemeColors", KEY = "colorPrimary";
 
     @ColorInt
     public int color;
@@ -41,12 +41,7 @@ public class ThemeColors {
         editor.putString(KEY, stringColor);
         editor.apply();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) activity.recreate();
-        else {
-            Intent i = activity.getPackageManager().getLaunchIntentForPackage(activity.getPackageName());
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            activity.startActivity(i);
-        }
+        activity.recreate();
     }
 
     private boolean isLightActionBar() {// Checking if title text color will be black

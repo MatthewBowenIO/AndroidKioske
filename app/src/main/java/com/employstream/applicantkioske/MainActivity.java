@@ -3,10 +3,12 @@ package com.employstream.applicantkioske;
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.employstream.applicantkioske.Controllers.Api;
+import com.employstream.applicantkioske.Controllers.Session;
 import com.employstream.applicantkioske.Controllers.ThemeColors;
 import com.employstream.applicantkioske.Interfaces.ApiInterface;
 
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements ApiInterface {
     private LinearLayout mScreen;
     private TextView mCustomerCode;
     private ViewSwitcher mCompanyLogoSwitcher;
+
+    private Session mSession = Session.getSession();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements ApiInterface {
         mCustomerCode = (TextView) findViewById(R.id.customerCode);
         mCustomerCode.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     new Api.Get("company", "https://testapp.employstream.com/api/unauthprofile/customer?customer_code=" + mCustomerCode.getText(), MainActivity.this).execute((Void) null);
                     new Api.Get("logo", "https://testapp.employstream.com/api/branding/logo/" + mCustomerCode.getText(), MainActivity.this).execute((Void) null);
@@ -70,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements ApiInterface {
 
         mScreen = (LinearLayout) findViewById(R.id.screen);
 
-        ObjectAnimator colorFade = ObjectAnimator.ofObject(mScreen, "backgroundColor", new ArgbEvaluator(), hex2Rgb(mPrefs.getString("colorPrimary", "")), hex2Rgb(mPrefs.getString("colorPrimaryDark", "")));
+        ObjectAnimator colorFade = ObjectAnimator.ofObject(mScreen, "backgroundColor", new ArgbEvaluator(), mSession.hex2Rgb(mPrefs.getString("colorPrimary", "")), mSession.hex2Rgb(mPrefs.getString("colorPrimaryDark", "")));
         colorFade.setDuration(1000);
         colorFade.start();
     }
@@ -88,10 +92,6 @@ public class MainActivity extends AppCompatActivity implements ApiInterface {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private static int hex2Rgb(String colorStr) {
-        return Color.argb(255, Integer.valueOf( colorStr.substring( 1, 3 ), 16 ), Integer.valueOf( colorStr.substring( 3, 5 ), 16 ), Integer.valueOf( colorStr.substring( 5, 7 ), 16 ));
     }
 
     private void switchViews() {
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements ApiInterface {
     private void handleBrandingColorsReturn(JSONObject requestData) throws Exception {
         System.out.println(requestData);
         final JSONArray values = requestData.getJSONArray("colors");
-        ObjectAnimator colorFade = ObjectAnimator.ofObject(mScreen, "backgroundColor", new ArgbEvaluator(), hex2Rgb(mPrefs.getString("colorPrimaryDark", "")), hex2Rgb((String)values.get(0)));
+        ObjectAnimator colorFade = ObjectAnimator.ofObject(mScreen, "backgroundColor", new ArgbEvaluator(), mSession.hex2Rgb(mPrefs.getString("colorPrimaryDark", "")), mSession.hex2Rgb((String)values.get(0)));
         colorFade.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -149,5 +149,13 @@ public class MainActivity extends AppCompatActivity implements ApiInterface {
         });
         colorFade.setDuration(1000);
         colorFade.start();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(MainActivity.this, ApplicationActivity.class);
+                startActivity(i);
+            }
+        }, 3000);
     }
 }
