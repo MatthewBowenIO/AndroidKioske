@@ -1,14 +1,20 @@
 package com.employstream.applicantkioske.Fragments;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.employstream.applicantkioske.R;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,7 +69,9 @@ public class ApplicationCompleteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_application_complete, container, false);
+        View view = inflater.inflate(R.layout.fragment_application_complete, container, false);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

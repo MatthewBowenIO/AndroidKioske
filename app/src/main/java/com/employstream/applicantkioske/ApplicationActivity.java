@@ -104,7 +104,7 @@ public class ApplicationActivity extends AppCompatActivity
 
         mPrefs = getSharedPreferences("employstream", MODE_PRIVATE);
         ((CoordinatorLayout) findViewById(R.id.main_content)).setBackgroundColor(mSession.hex2Rgb(mPrefs.getString("colorPrimaryDark", "")));
-        applyGradient();
+        //applyGradient();
 
         byte[] decodedString = Base64.decode(mPrefs.getString("logo", ""), Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
@@ -209,9 +209,9 @@ public class ApplicationActivity extends AppCompatActivity
                 case 1:
                     return JobPrefsFragment.newInstance();
                 case 2:
-                    return EducationHistoryFragment.newInstance();
+                    return AddEducationHistoryFragment.newInstance();
                 case 3:
-                    return WorkHistoryFragment.newInstance();
+                    return AddWorkHistoryFragment.newInstance();
                 case 4:
                     return ApplicationCompleteFragment.newInstance();
                 case 5:

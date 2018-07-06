@@ -1,13 +1,28 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.employstream.applicantkioske.Fragments.ApplicationCompleteFragment">
+    tools:context="com.employstream.applicantkioske.Fragments.ApplicationCompleteFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="40sp"
+        android:text="All Done!"
+        android:textColor="#fff"
+        android:layout_marginTop="50dp"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:paddingLeft="150dp"
+        android:paddingRight="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:text="Thank you for filling out an application! Please submit and you'll hear back from an agent soon."
+        android:textColor="#fff"
+        android:layout_marginTop="50dp"/>
+
+</LinearLayout>

@@ -7,7 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
+import com.employstream.applicantkioske.ApplicationActivity;
+import com.employstream.applicantkioske.Controllers.MyApplication;
 import com.employstream.applicantkioske.R;
 
 /**
@@ -61,7 +65,15 @@ public class JobPrefsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_job_prefs, container, false);
+        View view = inflater.inflate(R.layout.fragment_job_prefs, container, false);
+
+        Spinner spinner = (Spinner) view.findViewById(R.id.JobPrefsSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(MyApplication.getContext(),
+                R.array.job_prefs, R.layout.spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

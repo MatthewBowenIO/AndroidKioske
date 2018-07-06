@@ -1,111 +1,178 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.employstream.applicantkioske.Fragments.BasicInformationFragment"
-    android:orientation="vertical"
     android:paddingLeft="5dp"
-    android:paddingRight="5dp">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="40sp"
-        android:text="Basic Information"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="50dp"/>
+    android:paddingRight="5dp"
+    android:paddingBottom="50dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:hint="First Name"
-            android:layout_weight=".5"/>
+            android:gravity="center_horizontal"
+            android:textSize="40sp"
+            android:text="Basic Information"
+            android:textColor="#fff"
+            android:layout_marginTop="50dp"/>
 
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:hint="Last Name"
-            android:layout_weight=".5"/>
+            android:orientation="horizontal">
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.TextInputLayout"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_weight=".50"
+                android:padding="5dp">
+                <android.support.design.widget.TextInputEditText
+                    style="@style/Widget.TextEdit"
+                    android:id="@+id/first_name_input"
+                    android:hint="First Name"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.TextInputLayout"
+                android:id="@+id/email_input"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_weight=".50"
+                android:padding="5dp">
+                <android.support.design.widget.TextInputEditText
+                    style="@style/Widget.TextEdit"
+                    android:id="@+id/last_name_input"
+                    android:hint="Last Name"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/Widget.TextInputLayout"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:padding="5dp">
+            <android.support.design.widget.TextInputEditText
+                style="@style/Widget.TextEdit"
+                android:id="@+id/email_input_edit"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.TextInputLayout"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_weight=".50"
+                android:padding="5dp">
+                <android.support.design.widget.TextInputEditText
+                    style="@style/Widget.TextEdit"
+                    android:id="@+id/password_input"
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.TextInputLayout"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_weight=".50"
+                android:padding="5dp">
+                <android.support.design.widget.TextInputEditText
+                    style="@style/Widget.TextEdit"
+                    android:id="@+id/confirm_password_input"
+                    android:hint="Confirm Paddword"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="40sp"
+            android:text="Current Residence"
+            android:textColor="#fff"
+            android:layout_marginTop="50dp"/>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/Widget.TextInputLayout"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+            <android.support.design.widget.TextInputEditText
+                style="@style/Widget.TextEdit"
+                android:id="@+id/street_address_input"
+                android:hint="Address"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/Widget.TextInputLayout"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+            <android.support.design.widget.TextInputEditText
+                style="@style/Widget.TextEdit"
+                android:id="@+id/apt_num_input"
+                android:hint="Apt #"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/Widget.TextInputLayout"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+            <android.support.design.widget.TextInputEditText
+                style="@style/Widget.TextEdit"
+                android:id="@+id/city_input"
+                android:hint="City"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.TextInputLayout"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_weight=".50"
+                android:padding="5dp">
+                <android.support.design.widget.TextInputEditText
+                    style="@style/Widget.TextEdit"
+                    android:id="@+id/state_input"
+                    android:hint="State"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.TextInputLayout"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_weight=".50"
+                android:padding="5dp">
+                <android.support.design.widget.TextInputEditText
+                    style="@style/Widget.TextEdit"
+                    android:id="@+id/zip_input"
+                    android:hint="Zip"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
     </LinearLayout>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:hint="Email" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:hint="Password"
-            android:layout_weight=".5"
-            android:inputType="textPassword"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:hint="Confirm Password"
-            android:layout_weight=".5"
-            android:inputType="textPassword"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="40sp"
-        android:text="Current Residence"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="100dp"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:hint="Street Address" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:hint="Apt #" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:hint="City" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:hint="State"
-            android:layout_weight=".5"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:hint="Zip"
-            android:layout_weight=".5"/>
-    </LinearLayout>
-</LinearLayout>
+</ScrollView>
